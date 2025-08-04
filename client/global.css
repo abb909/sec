@@ -1,0 +1,319 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /**
+   * Tailwind CSS theme
+   * tailwind.config.ts expects the following color variables to be expressed as HSL values.
+   * A different format will require also updating the theme in tailwind.config.ts.
+  */
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .gradient-blue {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  }
+
+  .gradient-indigo {
+    background: linear-gradient(135deg, #6366f1 0%, #4338ca 100%);
+  }
+
+  .glass-effect {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  /* Mobile-first responsive utilities */
+  .mobile-scroll-container {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+
+  .mobile-scroll-container::-webkit-scrollbar {
+    height: 4px;
+    width: 4px;
+  }
+
+  .mobile-scroll-container::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 2px;
+  }
+
+  .mobile-scroll-container::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 2px;
+  }
+
+  .mobile-scroll-container::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+  }
+
+  /* Responsive table container */
+  .responsive-table {
+    min-width: 100%;
+    overflow-x: auto;
+  }
+
+  @media (max-width: 640px) {
+    .responsive-table {
+      font-size: 0.875rem;
+    }
+  }
+
+  /* Enhanced mobile touch targets */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Mobile-optimized text sizes */
+  @media (max-width: 768px) {
+    .mobile-text-lg {
+      font-size: 1.125rem;
+      line-height: 1.75rem;
+    }
+
+    .mobile-text-base {
+      font-size: 1rem;
+      line-height: 1.5rem;
+    }
+
+    .mobile-text-sm {
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+    }
+  }
+
+  /* Mobile card spacing */
+  @media (max-width: 768px) {
+    .mobile-card-padding {
+      padding: 1rem;
+    }
+
+    .mobile-spacing-y {
+      margin-top: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+  }
+
+  /* Better mobile form inputs */
+  @media (max-width: 768px) {
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="number"],
+    input[type="date"],
+    select,
+    textarea {
+      font-size: 16px; /* Prevents zoom on iOS */
+      min-height: 44px;
+    }
+  }
+
+  /* Mobile safe area padding for devices with notches */
+  .mobile-safe-area {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* Improved mobile button styling */
+  @media (max-width: 768px) {
+    .mobile-button {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      min-height: 48px;
+      touch-action: manipulation;
+    }
+  }
+
+  /* Mobile-optimized dialogs */
+  @media (max-width: 640px) {
+    [data-radix-dialog-content] {
+      width: 98vw !important;
+      max-width: none !important;
+      margin: 0.25rem !important;
+      border-radius: 16px !important;
+    }
+
+    [data-radix-dialog-overlay] {
+      background-color: rgba(0, 0, 0, 0.6) !important;
+    }
+  }
+
+  /* Ensure dialogs are properly contained on mobile */
+  @media (max-width: 768px) {
+    .mobile-dialog-container {
+      max-height: 95vh;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      font-size: 0.875rem; /* Slightly smaller text on mobile */
+    }
+
+    .mobile-dialog-header {
+      padding: 0.75rem 1rem 1rem !important;
+      border-bottom: 1px solid #f3f4f6;
+    }
+
+    .mobile-dialog-header h2 {
+      font-size: 1.125rem !important; /* Responsive title size */
+      line-height: 1.5 !important;
+    }
+
+    .mobile-dialog-content {
+      padding: 1rem !important;
+    }
+
+    /* Better mobile form spacing */
+    .mobile-dialog-container .space-y-4 > * + * {
+      margin-top: 0.75rem !important;
+    }
+
+    .mobile-dialog-container .space-y-6 > * + * {
+      margin-top: 1rem !important;
+    }
+
+    /* Mobile-friendly input styling */
+    .mobile-dialog-container input,
+    .mobile-dialog-container select,
+    .mobile-dialog-container textarea {
+      font-size: 16px !important; /* Prevents zoom on iOS */
+      min-height: 44px !important;
+    }
+
+    /* Better mobile button spacing */
+    .mobile-dialog-container .flex.gap-2 {
+      gap: 0.5rem !important;
+    }
+
+    .mobile-dialog-container .flex.gap-3 {
+      gap: 0.75rem !important;
+    }
+
+    /* Mobile focus management */
+    .mobile-dialog-container *:focus {
+      outline: 2px solid #3b82f6 !important;
+      outline-offset: 2px !important;
+    }
+
+    /* Prevent zoom on input focus for iOS */
+    .mobile-dialog-container input:focus,
+    .mobile-dialog-container select:focus,
+    .mobile-dialog-container textarea:focus {
+      transform: none !important;
+      zoom: 1 !important;
+    }
+  }
+
+  /* Enhanced mobile modal animation */
+  @media (max-width: 640px) {
+    [data-state="open"][data-radix-dialog-content] {
+      animation-duration: 200ms !important;
+      animation-timing-function: ease-out !important;
+    }
+
+    [data-state="closed"][data-radix-dialog-content] {
+      animation-duration: 150ms !important;
+      animation-timing-function: ease-in !important;
+    }
+  }
+}
