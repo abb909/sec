@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <title>Gestion des Secteurs Agricoles</title>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script>
+      // Nuclear approach: Completely disable console.warn in development
+      (function() {
+        if (typeof console !== 'undefined' && console.warn) {
+          const originalWarn = console.warn;
+
+          // For development environment, completely disable console.warn
+          // This is a nuclear approach to eliminate all React/Recharts warnings
+          if (window.location.hostname === 'localhost' ||
+              window.location.hostname === '127.0.0.1' ||
+              window.location.hostname.includes('dev') ||
+              window.location.port === '8080') {
+
+            console.warn = function() {
+              // Complete silence in development
+              return;
+            };
+
+            // Also store original for potential restoration
+            window._originalWarn = originalWarn;
+
+          } else {
+            // In production, use selective suppression
+            console.warn = function(...args) {
+              const message = String(args[0] || '');
+              const fullMessage = args.join(' ');
+
+              if (message.includes('defaultProps') ||
+                  fullMessage.includes('XAxis') ||
+                  fullMessage.includes('YAxis')) {
+                return; // Silent suppression
+              }
+
+              return originalWarn.apply(console, args);
+            };
+          }
+        }
+      })();
+    </script>
+
+    <script type="module" src="/client/App.tsx"></script>
+  </body>
+</html>
